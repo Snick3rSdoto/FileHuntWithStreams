@@ -2,10 +2,11 @@
 
 void searchFile(const std::filesystem::path& directory, const std::string& fileName) {
     for (const auto& entry : std::filesystem::recursive_directory_iterator(directory)) {
-        if (entry.is_regular_file() && entry.path().filename() == fileName) {
-            std::cout << "Файл найден: " << entry.path() << std::endl;
+        // std::cout << entry.path() << std::endl;
+        if (entry.path().filename() == fileName) {
+            std::cout << "File will find: " << entry.path() << std::endl;
             return;
         }
     }
-    std::cout << "Файл не найден." << std::endl;
+    std::cout << "File not found." << std::endl;
 }
