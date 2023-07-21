@@ -2,6 +2,9 @@
 #include <filesystem>
 #include <vector>
 #include <thread>
-#include <mutex>
+#include <list>
+#include <chrono>
+#include <atomic>
 
-void searchFile(const std::filesystem::path& directory, const std::string& fileName);
+void searchFileThreaded(const std::filesystem::path &directory, const std::string &fileName);
+void searchFileSingle(const std::filesystem::path &directory, const std::string &fileName);

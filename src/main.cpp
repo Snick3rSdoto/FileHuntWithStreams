@@ -2,9 +2,9 @@
 
 int main() {
     std::string rootDirectory = "/";
-    std::string fileNameToFind = "aboba2";
+    std::string fileNameToFind = "aboba222";
 
-    searchFile(rootDirectory, fileNameToFind);
+    searchFileThreaded(rootDirectory, fileNameToFind);
 
     return 0;
 }

@@ -1,5 +1,5 @@
 TARGET = findFileApp
-COMP = g++
+COMP = g++ 
 
 PREF_SRC = ./src/
 PREF_OBJ = ./obj/
