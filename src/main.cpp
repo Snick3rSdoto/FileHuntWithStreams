@@ -1,8 +1,8 @@
 #include "searchFileLib.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     std::string rootDirectory = "/";
-    std::string fileNameToFind = "aboba222";
+    std::string fileNameToFind = argv[1];
 
     searchFileThreaded(rootDirectory, fileNameToFind);
 

@@ -1,21 +1,21 @@
 #include "searchFileLib.h"
 
 
-const unsigned int MAX_THREADS = 8;
+// const unsigned int MAX_THREADS = 8;
 
 std::atomic<bool> fileFound(false);
 
-void searchFileThreaded(const std::filesystem::path &directory, const std::string &fileName) {
+void searchFileThreaded(const std::filesystem::path &directory, const std::string &fileName, int maxThreads) {
     try {
         std::list<std::thread> threads;
         for (const auto &entry : std::filesystem::directory_iterator(directory, std::filesystem::directory_options::skip_permission_denied)) {
             if (fileFound) { break; }
 
-            if (threads.size() >= MAX_THREADS) {
+            if (threads.size() >= maxThreads) {
                 threads.front().join();
                 threads.pop_front();
             }
-            if (std::filesystem::is_directory(entry.path()) && threads.size() < MAX_THREADS) {
+            if (std::filesystem::is_directory(entry.path()) && threads.size() < maxThreads) {
                 threads.push_back(std::thread(searchFileSingle, entry.path(), fileName));
             }
         }
